@@ -1,0 +1,4 @@
+module.exports = {
+  MONGOURI: "mongodb://127.0.0.1:27017/food-delivery",
+  JWT_SECRET: "abcdefg",
+};
