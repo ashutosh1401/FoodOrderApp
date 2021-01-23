@@ -4,6 +4,7 @@ const Owner = require("../models/owner");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/keys");
+const { authOwner } = require("../middleware/authenticate");
 
 router.post("/signowner", (req, res) => {
   const {
@@ -64,6 +65,66 @@ router.post("/signowner", (req, res) => {
         });
     });
   });
+});
+
+router.post("/loginowner", (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(422).send({ error: "Please Add Email or Password" });
+  }
+  Owner.findOne({ email }).then((savedOwner) => {
+    if (!savedOwner) {
+      return res.status(422).json({ error: "Invalid Email or Password" });
+    }
+    bcrypt.compare(password, savedOwner.password).then((isMatch) => {
+      if (isMatch) {
+        const token = jwt.sign({ _id: savedOwner._id.toString() }, JWT_SECRET);
+        const {
+          _id,
+          name,
+          email,
+          password,
+          resturantName,
+          addressLineOne,
+          addressLineTwo,
+          city,
+          pincode,
+          state,
+          avatar,
+        } = savedOwner;
+
+        res.send({
+          token,
+          owner: {
+            _id,
+            name,
+            email,
+            password,
+            resturantName,
+            addressLineOne,
+            addressLineTwo,
+            city,
+            pincode,
+            state,
+            avatar,
+          },
+        });
+      } else {
+        return res.status(404).send({ error: "Wrong Email or Password" });
+      }
+    });
+  });
+});
+
+router.get("/owner/:id", authOwner, (req, res) => {
+  Owner.findOne({ _id: req.params.id })
+    .select("-password")
+    .then((owner) => {
+      res.send({ owner });
+    })
+    .catch((err) => {
+      res.status(404).send({ error: "User Not Found" });
+    });
 });
 
 module.exports = router;
