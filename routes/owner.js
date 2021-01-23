@@ -99,7 +99,6 @@ router.post("/loginowner", (req, res) => {
             _id,
             name,
             email,
-            password,
             resturantName,
             addressLineOne,
             addressLineTwo,
@@ -118,7 +117,7 @@ router.post("/loginowner", (req, res) => {
 
 router.get("/owner/:id", authOwner, (req, res) => {
   Owner.findOne({ _id: req.params.id })
-    .select("-password")
+    .select("-password repassword")
     .then((owner) => {
       res.send({ owner });
     })
