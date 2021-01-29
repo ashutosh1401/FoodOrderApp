@@ -4,7 +4,7 @@ const Owner = require("../models/owner");
 
 const authOwner = (req, res, next) => {
   const { authorization } = req.headers;
-  console.log(authorization, req.headers);
+  //console.log(authorization, req.headers);
   if (!authorization) {
     return res.status(401).json({ error: "You must be logged in" });
   }

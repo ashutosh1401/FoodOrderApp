@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(require("./routes/owner"));
+app.use(require("./routes/menu"));
 
 app.listen(PORT, () => {
   console.log("Listening to port ", PORT);
