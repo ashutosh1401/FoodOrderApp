@@ -57,23 +57,28 @@ router.delete("/menu/:id", authOwner, (req, res) => {
     });
 });
 
-router.patch("/menu/:id", authOwner, (req, res) => {
+router.patch("/menu/:id", authOwner, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ["ItemName", "ItemDesc", "ItemCost"];
   const isAllowedUpdate = updates.forEach((update) => {
     allowedUpdates.includes(update);
   });
   console.log(updates, isAllowedUpdate);
-  if (!isAllowedUpdate) {
-    return res.status(400).send({ error: "Invalid Update" });
-  }
+  // if (!isAllowedUpdate) {
+  //   return res.status(400).send({ error: "Invalid Update" });
+  // }
+  try {
+    const menu = await Menu.findOne({ _id: req.params.id });
 
-  Menu.findOneAndUpdate(
-    { _id: req.params.id },
-    {
-      $push: {},
+    if (!menu) {
+      return res.status(404).send();
     }
-  );
+    updates.forEach((update) => (menu[update] = req.body[update]));
+    await menu.save();
+    res.send(menu);
+  } catch (err) {
+    res.status(500).send(err);
+  }
 });
 
 module.exports = router;

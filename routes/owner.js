@@ -78,7 +78,9 @@ router.post("/loginowner", (req, res) => {
     }
     bcrypt.compare(password, savedOwner.password).then((isMatch) => {
       if (isMatch) {
-        const token = jwt.sign({ _id: savedOwner._id.toString() }, JWT_SECRET);
+        const token = jwt.sign({ _id: savedOwner._id.toString() }, JWT_SECRET, {
+          expiresIn: "48h",
+        });
         const {
           _id,
           name,
