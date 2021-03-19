@@ -29,43 +29,10 @@ const OwnerSchema = new mongoose.Schema({
       }
     },
   },
-  repassword: {
-    type: String,
-    required: true,
-    minlength: 6,
-    trim: true,
-    validate(value) {
-      if (value.toLowerCase() == "password") {
-        throw new Error("Password could not be named as password");
-      }
-    },
-  },
-  resturantName: {
-    type: String,
-    required: true,
-  },
-  addressLineOne: {
-    type: String,
-    required: true,
-  },
-  addressLineTwo: {
-    type: String,
-    required: true,
-  },
-  city: {
-    type: String,
-    required: true,
-  },
-  pincode: {
-    type: Number,
-    required: true,
-  },
-  state: {
-    type: String,
-    required: true,
-  },
   avatar: {
     type: String,
+    default:
+      "https://res.cloudinary.com/devimg/image/upload/v1600697065/defaultpic_dg4iun.png",
   },
 });
 

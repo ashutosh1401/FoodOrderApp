@@ -16,6 +16,8 @@ const MenuSchema = new mongoose.Schema({
   },
   ItemPhoto: {
     type: String,
+    default:
+      "https://res.cloudinary.com/devimg/image/upload/v1615014071/imagenotavail_o7tzpn.jpg",
   },
   postedBy: {
     type: ObjectId,
