@@ -22,6 +22,13 @@ const addressSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  landmark: {
+    type: String,
+  },
+  postedBy: {
+    type: ObjectId,
+    ref: "Owner",
+  },
 });
 
 const Address = mongoose.model("Address", addressSchema);
