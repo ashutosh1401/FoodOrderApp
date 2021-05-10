@@ -14,9 +14,9 @@ router.post("/address", isAuth, async (req, res) => {
       pincode: req.body.pincode,
       postedBy: req.user,
     });
-
-    if (newAddress) {
-      res.send(newAddress);
+    const finAddress = await newAddress.save()
+    if (finAddress) {
+      res.send(finAddress);
     }
   } catch (e) {
     res.status(404).send(e);
@@ -28,6 +28,7 @@ router.get("/address", isAuth, async (req, res) => {
     const allAddress = await Address.find({
       postedBy: req.user._id,
     });
+    //console.log(allAddress);
     if (allAddress) {
       res.send(allAddress);
     }

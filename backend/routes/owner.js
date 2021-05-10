@@ -5,7 +5,8 @@ import bcrypt from "bcryptjs";
 const { getToken } = require("../middleware/utils");
 
 router.post("/register", async (req, res) => {
-  const inowner = Owner.findOne({
+
+  const inowner = await Owner.findOne({
     email: req.body.email,
   });
   if (inowner) {

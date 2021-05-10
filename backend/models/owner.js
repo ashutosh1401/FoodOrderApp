@@ -12,22 +12,12 @@ const OwnerSchema = new mongoose.Schema({
     required: true,
     trim: true,
     lowercase: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error("Email is invalid");
-      }
-    },
   },
   password: {
     type: String,
     required: true,
     minlength: 6,
     trim: true,
-    validate(value) {
-      if (value.toLowerCase() == "password") {
-        throw new Error("Password could not be named as password");
-      }
-    },
   },
   avatar: {
     type: String,

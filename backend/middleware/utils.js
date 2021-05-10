@@ -26,7 +26,7 @@ const isAuth = (req, res, next) => {
       return;
     });
   } else {
-    return res.status(401).send({ error: "token is not supplied" });
+    return res.status(401).send({ error: "user is not authenticated" });
   }
 };
 
