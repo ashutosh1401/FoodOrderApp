@@ -27,7 +27,7 @@ const addressSchema = new mongoose.Schema({
   },
   postedBy: {
     type: ObjectId,
-    ref: "Owner",
+    refPath: ["Owner", "User"],
   },
 });
 
