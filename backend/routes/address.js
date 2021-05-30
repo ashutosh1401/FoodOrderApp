@@ -1,6 +1,6 @@
-import express from "express";
-import Address from "../models/address";
+const express = require('express')
 const router = express.Router();
+import Address from "../models/address";
 const { isAuth } = require("../middleware/utils");
 
 router.post("/address", isAuth, async (req, res) => {
