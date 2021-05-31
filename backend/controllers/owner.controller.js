@@ -1,7 +1,11 @@
 const Owner = require('../models/owner')
+const { isValidEmail, isPasswordStrong } = require('../utlis/validations')
 
 exports.register = async (req, res) => {
-
+    if (!isValidEmail(req.body.email))
+        return res.status(400).send({ error: "Invalid Email" });
+    if (!isPasswordStrong(req.body.password))
+        return res.status(400).send({ error: "Password is not strong" });
     const inowner = await Owner.findOne({
         email: req.body.email,
     });
@@ -26,7 +30,37 @@ exports.register = async (req, res) => {
             });
         }
     } catch (e) {
-        res.status(404).send(e);
+        res.status(500).send(e);
         console.log(e);
     }
+}
+
+exports.login = async (req, res) => {
+    const siginowner = await Owner.findOne({
+        email: req.body.email,
+    });
+    if (!siginowner) {
+        return res.status(400).send({ error: "User is not registered" })
+    }
+    try {
+        if (siginowner) {
+            const isMatch = await bcrypt.compare(
+                req.body.password,
+                siginowner.password
+            );
+            if (isMatch) {
+                res.status(201).send({
+                    _id: siginowner._id,
+                    name: siginowner.name,
+                    email: siginowner.email,
+                    token: getToken(siginowner),
+                });
+            } else {
+                res.status(401).send({ error: "Invalid Credentials" });
+            }
+        }
+    } catch (e) {
+        res.status(500).send(e)
+    }
+
 }
