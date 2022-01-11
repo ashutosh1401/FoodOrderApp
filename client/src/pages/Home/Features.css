@@ -1,0 +1,8 @@
+.feature-section {
+    margin: 25px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-gap: 25px 25px;
+    transition: opacity 0.25s ease 0s, transform 0.25s ease 0s;
+    cursor: pointer;
+}
