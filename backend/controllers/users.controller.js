@@ -13,7 +13,7 @@ exports.register = async (req, res) => {
     })
 
     if (inuser) {
-        throw new Error("User already Exists");
+        return res.status(400).send({error:"User already exists"})
     }
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 8);
@@ -40,14 +40,17 @@ exports.register = async (req, res) => {
 }
 
 exports.login = async (req, res) => {
+    if (!isValidEmail(req.body.email))
+        return res.status(400).send({ error: "Invalid Email" });
     const signinuser = await User.findOne({
         email: req.body.email
     })
     if (!signinuser) {
         return res.status(400).send({ error: "User is not registered" })
     }
+    const isMatch = await bcrypt.compare(req.body.password,signinuser.password)
     try {
-        if (signinuser) {
+        if (isMatch) {
             res.status(201).send({
                 _id: signinuser._id,
                 name: signinuser.name,
@@ -55,6 +58,9 @@ exports.login = async (req, res) => {
                 avatar: signinuser.avatar,
                 token: getToken(signinuser)
             })
+        }
+        else {
+            res.status(401).send({ error: "Invalid Credentials" });
         }
     } catch (e) {
         res.status(500).send(e)
