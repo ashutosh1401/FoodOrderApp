@@ -4,13 +4,13 @@ const mongoose = require('mongoose')
 const Cors = require('cors')
 const helmet = require('helmet');
 const morgan = require('morgan');
+const compression = require('compression');
 
 // Routes
 const ownerRoute = require("./routes/owner");
 const userRoute = require('./routes/user')
 const menuRoute = require("./routes/menu");
 const addressRoute = require("./routes/address");
-const compression = require('compression');
 
 const PORT = process.env.PORT || 4000;
 
