@@ -13,7 +13,7 @@ const useStyles = makeStyles({
       maxWidth: 345,
       borderRadius: "5%",
       '&:hover': {
-          transform: "scale(1.1)"
+          transform: "scale(1.05)"
       }
     },
     media: {

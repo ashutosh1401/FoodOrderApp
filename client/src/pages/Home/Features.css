@@ -1,5 +1,5 @@
 .feature-section {
-    margin: 25px;
+    margin: 25px 20px;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 25px 25px;
