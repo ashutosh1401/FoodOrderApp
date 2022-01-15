@@ -2,15 +2,27 @@ import React,{useState} from 'react'
 import { Link, makeStyles, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { Grid, Paper, Avatar } from '@material-ui/core';
+import { Grid, Paper, Avatar, Box } from '@material-ui/core';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        backgroundImage: `url('https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')`,
+        backgroundSize: 'cover',
+        height: '100vh',
+        position: 'relative',
+        textAlign: 'center'
+    },
     paperStyle: {
         padding :20,
         height:'60vh',
         width:310, 
-        margin:"20px auto"
+        margin:"auto",
+        opacity: 0.85,
+        borderRadius: '5%',
+        '&:hover': {
+            opacity: 0.75
+        }
     },
     textInput: {
         margin: "5px auto",
@@ -29,7 +41,9 @@ function Login() {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     return (
-        <Grid>
+        <div className={classes.root}>
+        <Box pt={10}>
+        <Grid container>
         <Paper elevation={10} className={classes.paperStyle}>
             <Grid align='center'>
                 <Avatar className={classes.avatarStyle}><FastfoodIcon /></Avatar>
@@ -57,7 +71,7 @@ function Login() {
                     />
                     <Button type='submit' color='primary' variant="contained" className={classes.btnstyle} fullWidth>Sign in</Button>
                 <Typography>
-                    <Link to="#">
+                    <Link to="#forgot">
                         Forgot password ?
                     </Link>
                 </Typography>
@@ -68,6 +82,8 @@ function Login() {
                 </Typography>
             </Paper>
         </Grid>
+        </Box>
+        </div>
     )
 }
 
