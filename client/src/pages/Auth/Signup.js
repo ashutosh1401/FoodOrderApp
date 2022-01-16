@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Grid, Paper, Avatar, Box } from '@material-ui/core';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
+import Navbar from '../../components/Navbar';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -43,7 +44,8 @@ function Signup() {
     const [password,setPassword] = useState('')
     return (
         <div className={classes.root}>
-        <Box pt={10}>
+        <Navbar />
+        <Box pt={8}>
         <Grid container>
         <Paper elevation={10} className={classes.paperStyle}>
             <Grid align='center'>

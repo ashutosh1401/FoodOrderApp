@@ -44,7 +44,7 @@ function Login() {
     return (
         <div className={classes.root}>
             <Navbar />
-        <Box pt={10}>
+        <Box pt={8}>
         <Grid container>
         <Paper elevation={10} className={classes.paperStyle}>
             <Grid align='center'>
