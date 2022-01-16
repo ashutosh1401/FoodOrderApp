@@ -13,6 +13,23 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: "1rem",
     marginRight: "2rem",
   },
+  logo: {
+    float: "left",
+    listStyle: "none",
+    lineHeight: 1.5,
+    zIndex: 1
+  },
+  logoLink: {
+    textDecoration: "none",
+    color: "antiquewhite",
+    "-webkit-text-stroke": "0.1px #8a8787"
+  },
+  logoItem: {
+    listStyle: "none",
+    fontSize: "2rem",
+    marginTop: "2rem",
+    marginLeft: "2rem",
+  }
 }));
 
 function Navbar() {
@@ -20,6 +37,9 @@ function Navbar() {
 
   return (
     <div>
+      <div className={classes.logo}>
+        <Link to="/" className={classes.logoLink}><p className={classes.logoItem}>Foodie</p></Link>
+      </div>
       <ul className='image-navbar'>
                 <Link to='#addres'><li className={classes.navbarItem}>Add Resturant</li></Link>
                 <Link to='/login'><li className={classes.navbarItem}>Login</li></Link>
