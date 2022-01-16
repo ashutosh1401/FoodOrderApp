@@ -10,7 +10,7 @@ const TopHeader = () => {
             <ul className='image-navbar'>
                 <Link to='#addres'><li className='image-navbar-item'>Add Resturant</li></Link>
                 <Link to='/login'><li className='image-navbar-item'>Login</li></Link>
-                <Link to='#Signup'><li className='image-navbar-item'>Signup</li></Link>
+                <Link to='/signup'><li className='image-navbar-item'>Signup</li></Link>
             </ul>
             <div className='image-content'>
                 <h1>Foodie</h1>

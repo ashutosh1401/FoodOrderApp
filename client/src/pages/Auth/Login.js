@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Grid, Paper, Avatar, Box } from '@material-ui/core';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
+import Navbar from '../../components/Navbar';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     },
     paperStyle: {
         padding :20,
-        height:'60vh',
+        height:'auto',
         width:310, 
         margin:"auto",
         opacity: 0.85,
@@ -42,6 +43,7 @@ function Login() {
     const [password,setPassword] = useState('')
     return (
         <div className={classes.root}>
+            <Navbar />
         <Box pt={10}>
         <Grid container>
         <Paper elevation={10} className={classes.paperStyle}>
