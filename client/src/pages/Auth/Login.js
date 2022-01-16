@@ -76,7 +76,7 @@ function Login() {
                     </Link>
                 </Typography>
                 <Typography > Don't you have an account ?
-                     <Link href="/">
+                     <Link href="/signup">
                         Sign Up 
                     </Link>
                 </Typography>
