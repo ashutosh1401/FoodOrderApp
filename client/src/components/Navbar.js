@@ -1,30 +1,17 @@
 import React from "react";
 import {
-  AppBar,
-  Toolbar,
-  CssBaseline,
-  Typography,
   makeStyles,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
-  navlinks: {
-    marginLeft: theme.spacing(10),
-    display: "flex",
-  },
- logo: {
-    flexGrow: "1",
-    cursor: "pointer",
-  },
-  link: {
-    textDecoration: "none",
-    color: "white",
-    fontSize: "17px",
-    marginLeft: theme.spacing(3),
-    "&:hover": {
-      color: "yellow",
-    },
+  navbarItem: {
+    zIndex: 1,
+    listStyle: "none",
+    fontSize: "1.2rem",
+    marginTop: "2rem",
+    marginLeft: "1rem",
+    marginRight: "2rem",
   },
 }));
 
@@ -32,25 +19,13 @@ function Navbar() {
   const classes = useStyles();
 
   return (
-    <AppBar position="static">
-      <CssBaseline />
-      <Toolbar>
-        <Typography variant="h4" className={classes.logo}>
-          Navbar
-        </Typography>
-          <div className={classes.navlinks}>
-            <Link to="/about" className={classes.link}>
-              About
-            </Link>
-            <Link to="/contact" className={classes.link}>
-              Contact
-            </Link>
-            <Link to="/faq" className={classes.link}>
-              FAQ
-            </Link>
-          </div>
-      </Toolbar>
-    </AppBar>
+    <div>
+      <ul className='image-navbar'>
+                <Link to='#addres'><li className={classes.navbarItem}>Add Resturant</li></Link>
+                <Link to='/login'><li className={classes.navbarItem}>Login</li></Link>
+                <Link to='/signup'><li className={classes.navbarItem}>Signup</li></Link>
+            </ul>
+    </div>
   );
 }
 export default Navbar;
