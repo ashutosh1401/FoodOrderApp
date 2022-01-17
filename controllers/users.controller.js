@@ -1,5 +1,5 @@
 const User = require('../models/user')
-import bcrypt from "bcryptjs";
+const bcrypt = require('bcryptjs')
 const { getToken, isAuth } = require("../middleware/utils");
 const { isValidEmail, isPasswordStrong } = require('../utlis/validations')
 
