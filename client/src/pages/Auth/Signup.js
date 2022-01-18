@@ -1,10 +1,14 @@
 import React,{useState} from 'react'
-import { Link, makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { Grid, Paper, Avatar, Box } from '@material-ui/core';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import Navbar from '../../components/Navbar';
+import { Link, useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux"
+import {register} from "../../actions/userAction"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -42,6 +46,14 @@ function Signup() {
     const [name,setName] = useState('')
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const dispatch = useDispatch()
+    const userRegister = useSelector(state => state.userRegister)
+    const {loading, userInfo, error} = userRegister
+    let navigate = useNavigate()
+
+    const handleSignup = () => {
+        dispatch(register(name,email,password))
+    }
     return (
         <div className={classes.root}>
         <Navbar />
@@ -82,11 +94,16 @@ function Signup() {
                     className={classes.textInput}
                     onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button type='submit' color='primary' variant="contained" className={classes.btnstyle} fullWidth>Register</Button>
+                    <Button color="primary" style={{color:"#fff",margin:"1em 0em",width:"100%"}} variant="contained" onClick={handleSignup}>
+                        {
+                             loading?<CircularProgress size={24} color="secondary"></CircularProgress>:"Sign up"
+                        }
+                        {
+                            userInfo?navigate('/login'):''
+                        }
+                     </Button>
                 <Typography > Already Have an Account!
-                     <Link href="/login">
-                        Login 
-                    </Link>
+                    <Link to="/login">Login</Link>
                 </Typography>
             </Paper>
         </Grid>
