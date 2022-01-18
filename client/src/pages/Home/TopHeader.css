@@ -34,7 +34,7 @@
 
 .image-navbar a:hover {
     transform: scale(1.03);
-    margin-left: 0;
+    margin-right: 0;
 }
 
 .image-navbar-item {
