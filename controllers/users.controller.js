@@ -4,16 +4,20 @@ const { getToken, isAuth } = require("../middleware/utils");
 const { isValidEmail, isPasswordStrong } = require('../utlis/validations')
 
 exports.register = async (req, res) => {
+    if(req.body.name=='' || req.body.email=='' || req.body.email=='')
+    {
+        return res.status(400).send({message: "Null Values mot allowed"})
+    }
     if (!isValidEmail(req.body.email))
-        return res.status(400).send({ error: "Invalid Email" });
+        return res.status(400).send({ message: "Invalid Email" });
     if (!isPasswordStrong(req.body.password))
-        return res.status(400).send({ error: "Password is not strong" });
+        return res.status(400).send({ message: "Password is not strong" });
     const inuser = await User.findOne({
         email: req.body.email
     })
 
     if (inuser) {
-        return res.status(400).send({error:"User already exists"})
+        return res.status(400).send({message:"User already exists"})
     }
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 8);
@@ -41,12 +45,12 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
     if (!isValidEmail(req.body.email))
-        return res.status(400).send({ error: "Invalid Email" });
+        return res.status(400).send({ message: "Invalid Email" });
     const signinuser = await User.findOne({
         email: req.body.email
     })
     if (!signinuser) {
-        return res.status(400).send({ error: "User is not registered" })
+        return res.status(400).send({ message: "User is not registered" })
     }
     const isMatch = await bcrypt.compare(req.body.password,signinuser.password)
     try {
@@ -60,7 +64,7 @@ exports.login = async (req, res) => {
             })
         }
         else {
-            res.status(401).send({ error: "Invalid Credentials" });
+            res.status(401).send({ message: "Invalid Credentials" });
         }
     } catch (e) {
         res.status(500).send(e)
