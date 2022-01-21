@@ -23,6 +23,7 @@ const siginin = (email,password) => async (dispatch) => {
             '/api/users/login', 
             {email,password}
             )
+            console.log(data)
             dispatch({type: USER_SIGNIN_SUCCESS, payload: data})
             Cookies.set("userInfo", JSON.parse(JSON.stringify(data)));
     } catch (e) {

@@ -1,10 +1,14 @@
 import React,{useState} from 'react'
-import { Link, makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { Grid, Paper, Avatar, Box } from '@material-ui/core';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import Navbar from '../../components/Navbar';
+import { Link, useNavigate} from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux"
+import {siginin} from "../../actions/userAction"
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -41,6 +45,16 @@ function Login() {
     const classes = useStyles()
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
+    const dispatch = useDispatch()
+    const userSignin = useSelector(state => state.userSignin)
+    const {loading, userInfo, error} = userSignin
+    let navigate = useNavigate()
+
+
+    const handleSigin = () => {
+        dispatch(siginin(email,password))
+        navigate('/')
+    }
     return (
         <div className={classes.root}>
             <Navbar />
@@ -71,14 +85,21 @@ function Login() {
                     className={classes.textInput}
                     onChange={(e) => setPassword(e.target.value)}
                     />
-                    <Button type='submit' color='primary' variant="contained" className={classes.btnstyle} fullWidth>Sign in</Button>
+                    <Button type='submit' color='primary' style={{color:"#fff",margin:"1em 0em",width:"100%"}} variant="contained" className={classes.btnstyle} fullWidth onClick={handleSigin}>
+                        {
+                             loading?<CircularProgress size={24} color="secondary"></CircularProgress>:"Sign up"
+                        }
+                        {/* {
+                            userInfo?navigate('/'):''
+                        } */}
+                    </Button>
                 <Typography>
                     <Link to="#forgot">
                         Forgot password ?
                     </Link>
                 </Typography>
                 <Typography > Don't you have an account ?
-                     <Link href="/signup">
+                     <Link to="/signup">
                         Sign Up 
                     </Link>
                 </Typography>

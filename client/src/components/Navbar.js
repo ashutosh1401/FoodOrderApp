@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     float: "left",
     listStyle: "none",
-    lineHeight: 1.5,
     zIndex: 1
   },
   logoLink: {
@@ -27,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   logoItem: {
     listStyle: "none",
     fontSize: "2rem",
-    marginTop: "2rem",
+    marginTop: "1.4rem",
     marginLeft: "2rem",
   }
 }));
