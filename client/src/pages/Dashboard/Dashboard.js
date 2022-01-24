@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import {makeStyles} from '@material-ui/core/styles';
 import Navbar from "../../components/Navbar"
 import SearchBar from "material-ui-search-bar";
+import Carousel from 'react-material-ui-carousel'
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import CircularComponent from '../../components/CircularComponent';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -24,7 +28,10 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#21262d",
         color: "white !important",
     },
-
+    carouselHolder: {
+        margin: "2rem 4rem",
+        padding: "2rem",
+    }
 }))
 
 function Dashboard() {
@@ -43,6 +50,18 @@ function Dashboard() {
             <SearchBar className={classes.search} />
           </div>
          <p>Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispumLorem ispum</p>
+
+         <div className={classes.carouselHolder}>
+            <Carousel
+                NextIcon={<ArrowForwardIosIcon />}
+                PrevIcon={<ArrowBackIosIcon />}>
+                    <CircularComponent />
+                    <CircularComponent />
+                    <CircularComponent />
+                    <CircularComponent />
+                    
+            </Carousel>
+         </div>
       </div>
   </div>
   );
