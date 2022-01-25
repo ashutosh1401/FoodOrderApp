@@ -11,8 +11,8 @@ const useStyles = makeStyles(theme => ({
 function CircularComponent() {
   return (
       <div>
-          <Box border={1}>
-            <Box borderRadius="50%">
+          <Box border={2}>
+            <Box borderRadius="50%" border={1}>
                 sample text
             </Box>
           </Box>
