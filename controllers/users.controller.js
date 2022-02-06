@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
     })
 
     if (inuser) {
-        return res.status(400).send({message:"User already exists"})
+        return res.status(400).send({message:"User already exists", status:"error"})
     }
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 8);
@@ -29,16 +29,17 @@ exports.register = async (req, res) => {
         })
         const newUser = await user.save()
         if (newUser) {
-            res.send({
+            res.status(201).send({
                 _id: newUser._id,
                 name: newUser.name,
                 email: newUser.email,
                 password: newUser.password,
                 avatar: newUser.avatar,
+                status:"success"
             })
         }
     } catch (e) {
-        res.status(404).send(e);
+        res.status(500).send({message: e,status:"error"});
         console.log(e);
     }
 }
@@ -50,7 +51,7 @@ exports.login = async (req, res) => {
         email: req.body.email
     })
     if (!signinuser) {
-        return res.status(400).send({ message: "User is not registered" })
+        return res.status(400).send({ message: "User is not registered", status: "error" })
     }
     const isMatch = await bcrypt.compare(req.body.password,signinuser.password)
     try {
@@ -60,14 +61,15 @@ exports.login = async (req, res) => {
                 name: signinuser.name,
                 email: signinuser.email,
                 avatar: signinuser.avatar,
-                token: getToken(signinuser)
+                token: getToken(signinuser),
+                status: "success"
             })
         }
         else {
-            res.status(401).send({ message: "Invalid Credentials" });
+            res.status(401).send({ message: "Invalid Credentials",status: "error" });
         }
     } catch (e) {
-        res.status(500).send(e)
+        res.status(500).send({message: e,status:"error"});
     }
 
 }
