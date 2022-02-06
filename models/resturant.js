@@ -15,6 +15,10 @@ const resturantSchema = new mongoose.Schema({
         required: true,
         default: false,
     },
+    address: [{
+        type: ObjectId,
+        ref: 'Address'
+    }],
     menu: [{
         type: ObjectId,
         ref: 'Menu'
