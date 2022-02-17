@@ -8,24 +8,25 @@ import ResturantCard from '../../components/resturantCard';
 const useStyles = makeStyles((theme) => ({
     root: {
         width: "100vw",
-        backgroundColor: "#0d1117",
-        color: "white",
-        height: "100vh"
+        backgroundColor: "white",
+        color: "black",
+        height: "100%"
     },
     navBarHolder: {
-        backgroundColor: "#161b22",
+        backgroundColor: "#ffffff",
         paddingBottom: "1rem"
     },
     searchHolder: {
         margin: "0.5rem 2rem",
         padding: "0 2rem",
-        color: "white !important",
     },
     search: {
-        backgroundColor: "#21262d",
-        color: "white !important",
+        backgroundColor: "#ffffff",
     },
-    carouselHolder: {
+    resturantHolder: {
+        display: "grid",
+        gap: "1rem 1rem",
+        gridTemplateColumns: "auto auto auto",
         margin: "2rem 4rem",
         padding: "2rem",
     }
@@ -46,9 +47,8 @@ function Dashboard() {
           <div className={classes.searchHolder}>
             <SearchBar className={classes.search} />
           </div>
-         <p>Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispumLorem ispum</p>
 
-         <div className={classes.carouselHolder}>
+         <div className={classes.resturantHolder}>
            <ResturantCard image="https://images.unsplash.com/photo-1585238341267-1cfec2046a55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YnVyZ2VyfHx8fHx8MTY0NTExOTY1NQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
            <ResturantCard image="https://images.unsplash.com/photo-1595801106239-faefa2cdcf75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cGl6emF8fHx8fHwxNjQ1MTE5NjU1&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
            <ResturantCard image="https://images.unsplash.com/photo-1559329187-79d04171a646?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWlsa3NoYWtlfHx8fHx8MTY0NTExOTY1NQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />

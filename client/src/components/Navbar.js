@@ -5,6 +5,9 @@ import {
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    
+  },
   navbarItem: {
     zIndex: 1,
     listStyle: "none",
@@ -20,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logoLink: {
     textDecoration: "none",
-    color: "antiquewhite",
+    color: "black",
     "-webkit-text-stroke": "0.1px #8a8787"
   },
   logoItem: {
@@ -28,6 +31,18 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "2rem",
     marginTop: "1.4rem",
     marginLeft: "2rem",
+  },
+  imageNavabar: {
+    display: "flex",
+    position: "relative",
+    zIndex: 1,
+    justifyContent: "flex-end",
+    lineHeight: 1.5,
+  },
+  links: {
+    textDecoration: "none",
+    color: "black",
+    "-webkit-text-stroke": "0.1px #8a8787",
   }
 }));
 
@@ -35,14 +50,14 @@ function Navbar() {
   const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.root}>
       <div className={classes.logo}>
         <Link to="/" className={classes.logoLink}><p className={classes.logoItem}>Foodie</p></Link>
       </div>
-      <ul className='image-navbar'>
-                <Link to='#addres'><li className={classes.navbarItem}>Add Resturant</li></Link>
-                <Link to='/login'><li className={classes.navbarItem}>Login</li></Link>
-                <Link to='/signup'><li className={classes.navbarItem}>Signup</li></Link>
+      <ul className={classes.imageNavabar}>
+                <Link to='#addres' className={classes.links}><li className={classes.navbarItem}>Add Resturant</li></Link>
+                <Link to='/login' className={classes.links}><li className={classes.navbarItem}>Login</li></Link>
+                <Link to='/signup' className={classes.links}><li className={classes.navbarItem}>Signup</li></Link>
             </ul>
     </div>
   );
