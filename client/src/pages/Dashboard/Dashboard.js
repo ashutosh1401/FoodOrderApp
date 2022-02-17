@@ -3,10 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {makeStyles} from '@material-ui/core/styles';
 import Navbar from "../../components/Navbar"
 import SearchBar from "material-ui-search-bar";
-import Carousel from 'react-material-ui-carousel'
-import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
-import CircularComponent from '../../components/CircularComponent';
+import ResturantCard from '../../components/resturantCard';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,15 +49,11 @@ function Dashboard() {
          <p>Lorem ispum Lorem ispum Lorem ispum Lorem ispum Lorem ispumLorem ispum</p>
 
          <div className={classes.carouselHolder}>
-            <Carousel
-                NextIcon={<ArrowForwardIosIcon />}
-                PrevIcon={<ArrowBackIosIcon />}>
-                    <CircularComponent />
-                    <CircularComponent />
-                    <CircularComponent />
-                    <CircularComponent />
-                    
-            </Carousel>
+           <ResturantCard image="https://images.unsplash.com/photo-1585238341267-1cfec2046a55?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8YnVyZ2VyfHx8fHx8MTY0NTExOTY1NQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
+           <ResturantCard image="https://images.unsplash.com/photo-1595801106239-faefa2cdcf75?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8cGl6emF8fHx8fHwxNjQ1MTE5NjU1&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
+           <ResturantCard image="https://images.unsplash.com/photo-1559329187-79d04171a646?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8bWlsa3NoYWtlfHx8fHx8MTY0NTExOTY1NQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
+           <ResturantCard image="https://images.unsplash.com/photo-1644364935906-792b2245a2c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8a2ViYWJzLWJpcnlhbml8fHx8fHwxNjQ1MTE5NjU1&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
+           <ResturantCard image="https://images.unsplash.com/photo-1477505982272-ead89926a577?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8aWNlLWNyZWFtfHx8fHx8MTY0NTExOTY1NQ&ixlib=rb-1.2.1&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080" />
          </div>
       </div>
   </div>
