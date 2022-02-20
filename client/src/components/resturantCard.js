@@ -70,7 +70,7 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ResturantCard({image}) {
+export default function ResturantCard({image,resturantName,ratings,location,averagePrice}) {
   const classes = useStyles();
 
   return (
@@ -84,18 +84,18 @@ export default function ResturantCard({image}) {
         <CardContent>
             <div className={classes.heading}>
                 <div className={classes.headingName}>
-                    <h4>Resturant Name</h4>
+                    <h4>{resturantName}</h4>
                 </div>
                 <div className={classes.ratings}>
-                    4.1
+                    {ratings}
                 </div>
             </div>
             <div className={classes.bottomHeading}>
                 <div className={classes.location}>
-                    Resturant Name
+                    {location}
                 </div>
                 <div className={classes.averagePrice}>
-                    100
+                &#8377; {averagePrice}
                 </div>
             </div>
           {/* <Typography variant="h5" component="h3">
