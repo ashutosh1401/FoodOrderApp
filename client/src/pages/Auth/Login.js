@@ -53,7 +53,7 @@ function Login() {
 
     const handleSigin = () => {
         dispatch(siginin(email,password))
-        navigate('/')
+        navigate('/dashboard')
     }
     return (
         <div className={classes.root}>
