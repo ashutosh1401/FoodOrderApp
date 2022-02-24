@@ -48,17 +48,26 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
   const classes = useStyles();
-
+  let user_detail = localStorage.getItem('user_details')
+  console.log(user_detail)
   return (
     <div className={classes.root}>
       <div className={classes.logo}>
         <Link to="/" className={classes.logoLink}><p className={classes.logoItem}>Foodie</p></Link>
       </div>
-      <ul className={classes.imageNavabar}>
-                <Link to='#addres' className={classes.links}><li className={classes.navbarItem}>Add Resturant</li></Link>
-                <Link to='/login' className={classes.links}><li className={classes.navbarItem}>Login</li></Link>
-                <Link to='/signup' className={classes.links}><li className={classes.navbarItem}>Signup</li></Link>
-            </ul>
+      {!user_detail ?
+        <ul className={classes.imageNavabar}>
+          <Link to='#addres' className={classes.links}><li className={classes.navbarItem}>Add Resturant</li></Link>
+          <Link to='/login' className={classes.links}><li className={classes.navbarItem}>Login</li></Link>
+          <Link to='/signup' className={classes.links}><li className={classes.navbarItem}>Signup</li></Link>
+        </ul> 
+      :
+        <ul className={classes.imageNavabar}>
+          <Link to='#addres' className={classes.links}><li className={classes.navbarItem}>My Orders</li></Link>
+          <Link to='/login' className={classes.links}><li className={classes.navbarItem}>Cart</li></Link>
+          <Link to='/signup' className={classes.links}><li className={classes.navbarItem}>Profile</li></Link>
+        </ul>  }
+      
     </div>
   );
 }

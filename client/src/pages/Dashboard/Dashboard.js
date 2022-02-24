@@ -34,10 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Dashboard() {
     const classes = useStyles();
-    const dispatch = useDispatch();
-    const userSignin = useSelector(state=>state.userSignin);
-    const {loading,userInfo,error} = userSignin;
-
+    
   return ( 
   <div className={classes.root}>
       <div className={classes.navBarHolder}>
