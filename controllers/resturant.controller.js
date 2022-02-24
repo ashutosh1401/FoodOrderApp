@@ -24,3 +24,18 @@ exports.createResturant = async (req,res) => {
         res.status(500).send({message: error,status:"error"})
     }
 }
+
+exports.viewResturantDetails = async (req,res) => {
+    try {
+        const resid = req.params.id
+        const resdetails = await Resturant.findById({_id: resid})
+
+        if(!resdetails || resdetails.length == 0) {
+            return res.status(404).send({message:"Resturant not found",status:"error"})
+        }
+
+        res.status(200).send({resdetails})
+    } catch (error) {
+        res.status(500).send({message: error,status:"error"})
+    }
+}
