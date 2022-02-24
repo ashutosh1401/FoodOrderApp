@@ -22,7 +22,16 @@ const resturantSchema = new mongoose.Schema({
     menu: [{
         type: ObjectId,
         ref: 'Menu'
-    }]
+    }],
+    status: {
+        type: String,
+        enum: ["open","closed"],
+        default: "closed"
+    },
+    createdBy: {
+        type: ObjectId,
+        ref: "User"
+    }
 })
 
 const Resturant = mongoose.model("Resturant", resturantSchema)
