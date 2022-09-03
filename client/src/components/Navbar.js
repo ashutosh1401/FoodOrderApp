@@ -3,6 +3,7 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,12 +49,12 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar() {
   const classes = useStyles();
-  let user_detail = localStorage.getItem('user_details')
+  let user_detail = Cookies.get('userInfo');
   console.log(user_detail)
   return (
     <div className={classes.root}>
       <div className={classes.logo}>
-        <Link to="/" className={classes.logoLink}><p className={classes.logoItem}>Foodie</p></Link>
+        {user_detail ? <Link to="/dashboard" className={classes.logoLink}><p className={classes.logoItem}>Foodie</p></Link> : <Link to="/" className={classes.logoLink}><p className={classes.logoItem}>Foodie</p></Link> }
       </div>
       {!user_detail ?
         <ul className={classes.imageNavabar}>
@@ -63,9 +64,9 @@ function Navbar() {
         </ul> 
       :
         <ul className={classes.imageNavabar}>
-          <Link to='#addres' className={classes.links}><li className={classes.navbarItem}>My Orders</li></Link>
-          <Link to='/login' className={classes.links}><li className={classes.navbarItem}>Cart</li></Link>
-          <Link to='/signup' className={classes.links}><li className={classes.navbarItem}>Profile</li></Link>
+          <Link to='/orders' className={classes.links}><li className={classes.navbarItem}>My Orders</li></Link>
+          <Link to='/cart' className={classes.links}><li className={classes.navbarItem}>Cart</li></Link>
+          <Link to='/profile' className={classes.links}><li className={classes.navbarItem}>Profile</li></Link>
         </ul>  }
       
     </div>

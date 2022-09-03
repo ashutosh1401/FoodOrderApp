@@ -52,7 +52,8 @@ function Login() {
 
 
     const handleSigin = () => {
-        dispatch(siginin(email,password))
+        let a = dispatch(siginin(email,password))
+        console.log(a);
         navigate('/dashboard')
     }
     return (

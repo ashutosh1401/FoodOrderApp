@@ -7,7 +7,7 @@ import ResturantCard from '../../components/resturantCard';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        width: "100vw",
+        width: "98vw",
         backgroundColor: "white",
         color: "black",
         height: "100%"

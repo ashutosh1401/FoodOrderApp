@@ -28,6 +28,7 @@ const siginin = (email,password) => async (dispatch) => {
             Cookies.set("userInfo", JSON.parse(JSON.stringify(data)));
     } catch (e) {
         dispatch({type: USER_SIGNIN_FAIL, payload: e.message})
+        console.log(e.message)
     }
 }
 
