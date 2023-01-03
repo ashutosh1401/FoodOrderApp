@@ -70,12 +70,12 @@ const useStyles = makeStyles({
   }
 });
 
-export default function ResturantCard({image,resturantName,ratings,location,averagePrice}) {
+export default function RestaurantCard({image,resturantName,ratings,location,averagePrice,id}) {
   const classes = useStyles();
-
+  let click_url = `/restaurant?id=${id}`
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      <CardActionArea href={click_url}>
         <CardMedia
           className={classes.media}
           image={image}

@@ -28,6 +28,12 @@ const resturantSchema = new mongoose.Schema({
         enum: ["open","closed"],
         default: "closed"
     },
+    average_rating: {
+      type: Number,
+      min: 0,
+      max: 5,
+      default : 0
+    },
     createdBy: {
         type: ObjectId,
         ref: "User"

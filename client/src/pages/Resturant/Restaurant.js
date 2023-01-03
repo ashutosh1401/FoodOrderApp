@@ -1,8 +1,8 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
 import {makeStyles} from '@material-ui/core/styles';
 import Navbar from "../../components/Navbar"
 import SearchBar from "material-ui-search-bar";
+import {useSearchParams} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -32,9 +32,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 
-function Resturant() {
+function Restaurant() {
     const classes = useStyles();
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams.get("id"))
   return (
     <div className={classes.root}>
       <div className={classes.navBarHolder}>
@@ -46,11 +47,11 @@ function Resturant() {
           </div>
 
          <div className={classes.resturantHolder}>
-           
+           <p>Hello World</p>
          </div>
       </div>
   </div>
   )
 }
 
-export default Resturant
+export default Restaurant
